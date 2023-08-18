@@ -6,6 +6,9 @@
 
 ## Description
 
-Rungroops is an online platform for runners. This platform will help you to find clubs, schedule events, and meet other runners in your area.
+<p align="center">
+APS.Net Core + Bootstrap + Cloudinary + MSSQL Based Project
+</p>
+<p>Rungroops is an online platform for runners. This platform will help you to find clubs, schedule events, and meet other runners in your area.</p>
 
-Creator of project [@teddysmithdev](https://github.com/teddysmithdev)  
+Creator of project [@teddysmithdev](https://github.com/teddysmithdev)

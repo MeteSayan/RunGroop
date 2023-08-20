@@ -12,3 +12,20 @@ APS.Net Core + Bootstrap + Cloudinary + MSSQL Based Project
 <p>Rungroops is an online platform for runners. This platform will help you to find clubs, schedule events, and meet other runners in your area.</p>
 
 Creator of project [@teddysmithdev](https://github.com/teddysmithdev)
+
+```bash
+# Package Manager Console
+
+# Add migration
+$ Add-Migration Identity
+
+# Update database
+$ Update-Database
+```
+
+```bash
+# Powershell
+
+# Run seed for update db
+$ dotnet run seeddata
+```

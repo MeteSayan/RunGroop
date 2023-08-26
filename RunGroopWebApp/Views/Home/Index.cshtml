@@ -1,4 +1,6 @@
-﻿@{
+﻿﻿@using RunGroopWebApp.ViewModels
+@model HomeViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -13,55 +15,66 @@
     </div>
 </section>
 
-<div class="album py-5 bg-light">
+<section>
     <div class="container">
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
+        @if (Model.Clubs == null)
+        {
+            <h1 class="fw-light">
+                There are no running clubs in @Model.City, @Model.State! <a asp-area="" asp-controller="Account"
+                                                            asp-action="Login">Login</a> and create one!
+            </h1>
+        }
+        else
+        {
+            <div class="row justify-content-between mb-5">
+                <div class="col-auto">
+                    <h3>Running clubs near @Model.City, @Model.State</h3>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
+                <!--end of col-->
+                <div class="col-auto">
+                    <a href="#" class="btn btn-outline-primary">View all</a>
                 </div>
+                <!--end of col-->
             </div>
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            <ul class="row feature-list feature-list-sm">
+                @foreach (var item in Model.Clubs)
+                {
+                    <li class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <a href="#">
+                                <img class="card-img-top" src="@item.Image" alt="Card image cap">
+                            </a>
+                            <div class="card-body">
+                                <a href="#">
+                                    <h4 class="card-title">@item.Title</h4>
+                                    <p class="card-text text-body">@item.Description</p>
+                                </a>
                             </div>
-                            <small class="text-muted">9 mins</small>
+                            <div class="card-footer card-footer-borderless d-flex justify-content-between">
+                                <div class="text-small">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item"><i class="icon-heart"></i> 221</li>
+                                        <li class="list-inline-item"><i class="icon-message"></i> 14</li>
+                                    </ul>
+                                </div>
+                                <div class="dropup">
+                                    <a type="btn btn-success" asp-controller="Race" asp-action="Detail" asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-outline-secondary">View</a>
+                                    <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="SidekickButton">
+                                        <a class="dropdown-item" href="#">Save</a>
+                                        <a class="dropdown-item" href="#">Share</a>
+                                        <a class="dropdown-item" href="#">Comment</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Report</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </li>
+                }
+            </ul>
+        }
+        <!--end of row-->
     </div>
-</div>
+    <!--end of container-->
+</section>
